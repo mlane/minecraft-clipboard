@@ -1,0 +1,39 @@
+{
+  "root": true,
+  "extends": [
+    "react-important-stuff",
+    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "./eslint-config-linter.js"
+  ],
+  "plugins": [
+    "react",
+    "import",
+    "@typescript-eslint"
+  ],
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "no-debugger": "off",
+    "no-control-regex": "off",
+    "import/prefer-default-export": "off",
+    "no-unused-vars": "off",
+    "no-use-before-define": "off",
+    "no-undef": "off",
+    "react/prop-types": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "no-console": "off",
+    "no-unsafe-optional-chaining": "off",
+    "react/no-unknown-property": [
+      "error",
+      {
+        "ignore": [
+          "css"
+        ]
+      }
+    ]
+  }
+}

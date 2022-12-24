@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { FC } from 'react'
 import { css } from '@emotion/react'
-import { flexedRow } from 'src/common/styles'
+import { containerLg, flexedRow } from 'src/common/styles'
 import { footerHeight, topNavHeight } from 'src/constants/stylesConstants'
 import { PageRoutes } from 'src/pages'
 
@@ -12,10 +12,11 @@ export const Main: FC = () => (
 )
 
 const mainCss = css([
+  containerLg(),
   flexedRow,
   {
     alignItems: 'center',
     justifyContent: 'center',
-    height: `calc(100vh - ${footerHeight + topNavHeight}px)`,
+    minHeight: `calc(100vh - ${footerHeight + topNavHeight}px)`,
   },
 ])

@@ -1,9 +1,9 @@
 import { customRender } from 'src/test-utils'
-import { App } from '../../../App'
+import { Home } from '../Home'
 
-describe('App component', () => {
-  it('Text should be in the document', () => {
-    const { getByText } = customRender(<App />)
+describe('Home', () => {
+  it('checks for text in the document', () => {
+    const { getByText } = customRender(<Home />)
     expect(getByText('Home')).toBeInTheDocument()
   })
 })

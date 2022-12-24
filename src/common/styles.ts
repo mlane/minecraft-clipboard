@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import { fontMinecraftEvenings } from 'src/constants'
 
 const flexedColumn = css({
   display: 'flex',
@@ -34,8 +35,10 @@ const opacityActiveHover = css({
 })
 
 const typographyH1 = css({
-  fontSize: '5.5rem',
-  lineHeight: '5.5rem',
+  fontFamily: fontMinecraftEvenings,
+  fontSize: '4.5rem',
+  letterSpacing: '8px',
+  lineHeight: '4.5rem',
 })
 
 export {
@@ -43,6 +46,7 @@ export {
   flexedRowWithGap,
   flexedColumn,
   flexedRow,
+  fontMinecraftEvenings,
   opacityActiveHover,
   typographyH1,
 }

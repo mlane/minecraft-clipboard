@@ -1,4 +1,5 @@
 export { Footer } from './Footer'
 export { Main } from './Main'
+export { SignIn } from './SignIn'
 export { ThemeProvider } from './ThemeProvider'
 export { TopNav } from './TopNav'

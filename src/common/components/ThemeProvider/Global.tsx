@@ -34,7 +34,7 @@ const globalCss = css([
     },
     'body,html': {
       background: colors.cream,
-      color: colors.body,
+      color: colors.black,
       fontFamily: fontUbuntu,
       fontSize: '16px',
       lineHeight: '18px',

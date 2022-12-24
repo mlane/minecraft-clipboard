@@ -1,4 +1,10 @@
 import { FC } from 'react'
-import { PageRoutes } from './pages/PageRoutes'
+import { Footer, Main, ThemeProvider, TopNav } from './common/components'
 
-export const App: FC = () => <PageRoutes />
+export const App: FC = () => (
+  <ThemeProvider>
+    <TopNav />
+    <Main />
+    <Footer />
+  </ThemeProvider>
+)

@@ -1,3 +1,4 @@
+import './jest-setup'
 import { ReactElement } from 'react'
 import { render } from '@testing-library/react'
 

@@ -1,1 +1,0 @@
-export { Clipboards } from './Clipboards'

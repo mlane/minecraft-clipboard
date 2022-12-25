@@ -1,22 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import { FC } from 'react'
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { useAuth } from 'reactfire'
 import { buttonDefault } from 'src/common/styles'
 
-export const SignIn: FC = () => {
+export const SignOut: FC = () => {
   const auth = useAuth()
 
-  const onButtonClick = async () => {
-    const provider = new GoogleAuthProvider()
-    await signInWithPopup(auth, provider)
-    console.log('Signed in')
-  }
+  const onButtonClick = () =>
+    auth.signOut().then(() => console.log('Signed out'))
 
   return (
     <div>
       <button css={buttonDefault} type='button' onClick={onButtonClick}>
-        Sign in with Google
+        Sign out
       </button>
     </div>
   )

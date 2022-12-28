@@ -20,6 +20,7 @@ export const Clipboards: FC<ClipboardsProps> = ({ user }) => {
   const firestore = getFirestore()
   const ref = doc(firestore, 'users', uid)
   const { status, data: userData } = useFirestoreDocData(ref) ?? {}
+  const { clipboards } = userData ?? {}
   const [isButtonDisabled, setIsButtonDisabled] = useState(false)
 
   useEffect(() => {
@@ -34,8 +35,6 @@ export const Clipboards: FC<ClipboardsProps> = ({ user }) => {
   if (status === 'loading') {
     return null
   }
-
-  const { clipboards } = userData ?? {}
 
   const onCreateClipboardButtonClick = () => {
     if (!isButtonDisabled) {

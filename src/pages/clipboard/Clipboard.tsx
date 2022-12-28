@@ -2,12 +2,12 @@
 import { FC, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSigninCheck } from 'reactfire'
-import { typographyH1 } from 'src/common/styles'
+import { ClipboardContainer } from './ClipboardContainer'
 
 export const Clipboard: FC = () => {
   const { status, data: signInResult } = useSigninCheck()
   const navigate = useNavigate()
-  const { signedIn } = signInResult ?? {}
+  const { signedIn, user } = signInResult ?? {}
 
   useEffect(() => {
     if (status !== 'loading' && !signedIn) {
@@ -20,10 +20,5 @@ export const Clipboard: FC = () => {
   if (status === 'loading') {
     return null
   }
-
-  return (
-    <div>
-      <h1 css={typographyH1}>Clipboard</h1>
-    </div>
-  )
+  return <ClipboardContainer user={user} />
 }

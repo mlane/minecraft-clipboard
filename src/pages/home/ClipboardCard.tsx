@@ -18,14 +18,16 @@ interface ClipboardCardProps {
     name?: string
   }
   clipboardId: string
+  onDeleteClipboardButtonClick(clipboardId: string): unknown
 }
 
 export const ClipboardCard: FC<ClipboardCardProps> = ({
   clipboard,
   clipboardId,
+  onDeleteClipboardButtonClick,
 }) => {
   const { name } = clipboard ?? {}
-  const onButtonClick = () => console.log('Delete clipboard')
+  const onButtonClick = () => onDeleteClipboardButtonClick(clipboardId)
 
   return (
     <div css={cardDefault}>

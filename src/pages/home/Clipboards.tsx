@@ -1,14 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useEffect, useState } from 'react'
+import { css, Theme } from '@emotion/react'
 import { User } from 'firebase/auth'
 import { doc, getFirestore, setDoc } from 'firebase/firestore'
 import isEmpty from 'lodash.isempty'
 import { useFirestoreDocData } from 'reactfire'
-import {
-  buttonDefault,
-  flexedColumnWithGap,
-  flexedRowWithGap,
-} from 'src/common/styles'
+import { buttonDefault, flexedColumnWithGap } from 'src/common/styles'
 import { generateClipboard } from 'src/utils'
 import { generateClipboardId } from 'src/utils/clipboardsUtils'
 import { ClipboardCard } from './ClipboardCard'
@@ -40,7 +37,7 @@ export const Clipboards: FC<ClipboardsProps> = ({ user }) => {
 
   const { clipboards } = userData ?? {}
 
-  const onButtonClick = () => {
+  const onCreateClipboardButtonClick = () => {
     if (!isButtonDisabled) {
       setIsButtonDisabled(true)
       if (typeof clipboards === 'object') {
@@ -55,6 +52,16 @@ export const Clipboards: FC<ClipboardsProps> = ({ user }) => {
     }
   }
 
+  const onDeleteClipboardButtonClick = (clipboardId: string) => {
+    if (typeof clipboards === 'object') {
+      delete clipboards[clipboardId]
+      console.log('setDoc: delete clipboard')
+      setDoc(ref, {
+        clipboards,
+      })
+    }
+  }
+
   return (
     <div css={clipboardsCss}>
       {!isEmpty(clipboards) && (
@@ -64,6 +71,7 @@ export const Clipboards: FC<ClipboardsProps> = ({ user }) => {
               key={key}
               clipboard={clipboards[key]}
               clipboardId={key}
+              onDeleteClipboardButtonClick={onDeleteClipboardButtonClick}
             />
           ))}
         </div>
@@ -72,7 +80,7 @@ export const Clipboards: FC<ClipboardsProps> = ({ user }) => {
         css={buttonDefault}
         disabled={isButtonDisabled}
         type='button'
-        onClick={onButtonClick}
+        onClick={onCreateClipboardButtonClick}
       >
         Create clipboard
       </button>
@@ -81,4 +89,10 @@ export const Clipboards: FC<ClipboardsProps> = ({ user }) => {
 }
 
 const clipboardsCss = flexedColumnWithGap(4)
-const clipboardsGridCss = flexedRowWithGap(4)
+const clipboardsGridCss = ({ mq }: Theme) =>
+  css([
+    flexedColumnWithGap(4),
+    mq({
+      flexDirection: ['column', 'column', 'row'],
+    }),
+  ])

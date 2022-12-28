@@ -2,7 +2,7 @@ import { numberOfChecklist } from 'src/constants'
 
 export const generateClipboard = () => ({
   checklist: generateClipboardChecklist(),
-  name: '',
+  name: 'My Clipboard',
 })
 
 export const generateClipboardId = () =>
@@ -12,6 +12,6 @@ export const generateClipboardId = () =>
 
 export const generateClipboardChecklist = () =>
   Array(numberOfChecklist).fill({
-    name: 'My Clipboard',
+    name: '',
     state: 'default',
   })

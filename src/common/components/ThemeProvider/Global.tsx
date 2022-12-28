@@ -44,5 +44,9 @@ const globalCss = css([
       margin: 0,
       padding: 0,
     },
+    'body [disabled],body [disabled]:active,body [disabled]:hover': {
+      cursor: 'not-allowed',
+      opacity: '0.2',
+    },
   },
 ])

@@ -2,6 +2,7 @@
 import { FC, useEffect, useState } from 'react'
 import { User } from 'firebase/auth'
 import { doc, getFirestore, setDoc } from 'firebase/firestore'
+import isEmpty from 'lodash.isempty'
 import { useFirestoreDocData } from 'reactfire'
 import {
   buttonDefault,
@@ -9,7 +10,8 @@ import {
   flexedRowWithGap,
 } from 'src/common/styles'
 import { generateClipboard } from 'src/utils'
-import { ClipboardCard, ClipboardCardClipboardProps } from './ClipboardCard'
+import { generateClipboardId } from 'src/utils/clipboardsUtils'
+import { ClipboardCard } from './ClipboardCard'
 
 interface ClipboardsProps {
   user: User
@@ -25,8 +27,9 @@ export const Clipboards: FC<ClipboardsProps> = ({ user }) => {
 
   useEffect(() => {
     if (status !== 'loading' && typeof userData?.clipboards === 'undefined') {
+      console.log('setDoc: create clipboards')
       setDoc(ref, {
-        clipboards: [],
+        clipboards: {},
       })
     }
   }, [status, userData])
@@ -41,10 +44,11 @@ export const Clipboards: FC<ClipboardsProps> = ({ user }) => {
     if (!isButtonDisabled) {
       setIsButtonDisabled(true)
       if (typeof clipboards === 'object') {
-        const clipboardsClone = clipboards.slice()
-        clipboardsClone.push(generateClipboard())
+        const clipboardId = generateClipboardId()
+        clipboards[clipboardId] = generateClipboard()
+        console.log('setDoc: create clipboard')
         setDoc(ref, {
-          clipboards: clipboardsClone,
+          clipboards,
         })
       }
       setTimeout(() => setIsButtonDisabled(false), 3000)
@@ -53,12 +57,17 @@ export const Clipboards: FC<ClipboardsProps> = ({ user }) => {
 
   return (
     <div css={clipboardsCss}>
-      <div css={clipboardsGridCss}>
-        {clipboards &&
-          clipboards.map((clipboard: ClipboardCardClipboardProps) => (
-            <ClipboardCard key={clipboard?.id} clipboard={clipboard} />
+      {!isEmpty(clipboards) && (
+        <div css={clipboardsGridCss}>
+          {Object.keys(clipboards).map((key: string) => (
+            <ClipboardCard
+              key={key}
+              clipboard={clipboards[key]}
+              clipboardId={key}
+            />
           ))}
-      </div>
+        </div>
+      )}
       <button
         css={buttonDefault}
         disabled={isButtonDisabled}

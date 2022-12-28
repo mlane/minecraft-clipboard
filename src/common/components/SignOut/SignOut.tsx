@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { FC } from 'react'
 import { useAuth } from 'reactfire'
-import { buttonDefault } from 'src/common/styles'
+import { linkDefault } from 'src/common/styles'
 
 export const SignOut: FC = () => {
   const auth = useAuth()
@@ -10,10 +10,8 @@ export const SignOut: FC = () => {
     auth.signOut().then(() => console.log('Signed out'))
 
   return (
-    <div>
-      <button css={buttonDefault} type='button' onClick={onButtonClick}>
-        Sign out
-      </button>
-    </div>
+    <button css={linkDefault} type='button' onClick={onButtonClick}>
+      Sign out
+    </button>
   )
 }

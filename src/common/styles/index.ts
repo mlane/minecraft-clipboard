@@ -1,5 +1,6 @@
 export * from './button'
 export * from './container'
 export * from './flex'
+export * from './link'
 export * from './pseudoClasses'
 export * from './typography'

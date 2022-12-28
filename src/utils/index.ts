@@ -1,0 +1,1 @@
+export { generateClipboard } from './clipboardsUtils'

@@ -1,19 +1,27 @@
 /** @jsxImportSource @emotion/react */
 import { FC } from 'react'
 
-export interface ClipboardCardClipboardProps {
-  checklist: {
-    name: string
-    state: string
-  }[]
-  id: string
-  name?: string
-}
-
 interface ClipboardCardProps {
-  clipboard: ClipboardCardClipboardProps
+  clipboard: {
+    checklist: {
+      name: string
+      state: string
+    }[]
+    name?: string
+  }
+  clipboardId: string
 }
 
-export const ClipboardCard: FC<ClipboardCardProps> = ({ clipboard }) => (
-  <div>ClipboardCard</div>
-)
+export const ClipboardCard: FC<ClipboardCardProps> = ({
+  clipboard,
+  clipboardId,
+}) => {
+  const { checklist, name } = clipboard ?? {}
+  return (
+    <div>
+      {name && <div>{name}</div>}
+      <div>ID: {clipboardId}</div>
+      <div>{checklist && <div>Checklist: {checklist.length}</div>}</div>
+    </div>
+  )
+}

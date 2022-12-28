@@ -12,6 +12,6 @@ export const generateClipboardId = () =>
 
 export const generateClipboardChecklist = () =>
   Array(numberOfChecklist).fill({
-    name: '',
+    name: 'My Clipboard',
     state: 'default',
   })

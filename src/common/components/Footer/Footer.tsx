@@ -9,16 +9,15 @@ import {
   flexedRowWithGap,
   opacityActiveHover,
 } from 'src/common/styles'
-import { footerHeight, githubLink, spacing } from 'src/constants'
+import { footerHeight, githubLink } from 'src/constants'
 
 export const Footer: FC = () => {
-  const { status, data: signinResult } = useSigninCheck()
+  const { status, data: signInResult } = useSigninCheck()
+  const { signedIn } = signInResult ?? {}
 
   if (status === 'loading') {
     return null
   }
-
-  const { signedIn } = signinResult ?? {}
 
   return (
     <div css={footerCss}>

@@ -7,17 +7,16 @@ import { flexedColumnWithGap, typographyH1 } from 'src/common/styles'
 import { Clipboards } from './Clipboards'
 
 export const Home: FC = () => {
-  const { status, data: signinResult } = useSigninCheck()
+  const { status, data: signInResult } = useSigninCheck()
+  const { signedIn, user } = signInResult ?? {}
 
   if (status === 'loading') {
     return null
   }
 
-  const { signedIn, user } = signinResult ?? {}
-
   return (
     <div css={homeCss}>
-      <h1 css={homeTitleCss}>
+      <h1 css={typographyH1}>
         Minecraft
         <br />
         Clipboard
@@ -27,9 +26,8 @@ export const Home: FC = () => {
   )
 }
 
-const homeCss = css([flexedColumnWithGap(4)])
-const homeTitleCss = css([
-  typographyH1,
+const homeCss = css([
+  flexedColumnWithGap(4),
   {
     textAlign: 'center',
   },

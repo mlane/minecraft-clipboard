@@ -1,5 +1,7 @@
 # Minecraft Clipboard (the one you used in modpacks)
 
+## Wip - should be ready before new year :)
+
 ![splash](https://user-images.githubusercontent.com/13138738/209840593-be6280b3-2e22-4969-ac41-d78cff8946df.jpg)
 
 In my [Divine Journey playthrough](https://www.youtube.com/playlist?list=PLuQYSHROG2XpD93CX9dB8SJw_VaSTLJpr) I was using bibliocraft's clipboard as a todo/clipboard for tracking game progress.

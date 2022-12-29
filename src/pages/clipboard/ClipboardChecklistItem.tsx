@@ -1,7 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import { FC } from 'react'
+import { FC, FormEvent } from 'react'
 import { css } from '@emotion/react'
-import { flexedColumnWithGap, linkDefault } from 'src/common/styles'
+import {
+  flexedRowWithGap,
+  inputCheckbox,
+  inputCheckboxIcon,
+  inputCheckboxWrapper,
+  inputText,
+} from 'src/common/styles'
 import {
   ChangeClipboardChecklistItemConfig,
   ClipboardChecklistItemNameConfig,
@@ -21,30 +27,55 @@ export const ClipboardChecklistItem: FC<ClipboardChecklistItemProps> = ({
   state,
   onChange,
 }) => {
-  const onNameChange = () =>
+  const onNameChange = (event: FormEvent<HTMLInputElement>) => {
+    const { value } = event.currentTarget ?? {}
     onChange({
       index: index,
       type: 'name',
-      value: `#${index}: name`,
+      value,
     })
+  }
 
-  const onStateChange = () =>
+  const onStateChange = (event: FormEvent<HTMLInputElement>) => {
+    const { value } = event.currentTarget ?? {}
+    console.log('is this still happening')
+    const updatedValue =
+      value === 'default'
+        ? 'checked'
+        : value === 'checked'
+        ? 'disabled'
+        : 'default'
     onChange({
       index: index,
       type: 'state',
-      value: 'checked',
+      value: updatedValue,
     })
+  }
 
   return (
     <div css={clipboardChecklistItemCss}>
-      <button css={linkDefault} type='button' onClick={onNameChange}>
-        Name: {name}
-      </button>
-      <button css={linkDefault} type='button' onClick={onStateChange}>
-        State: {state}
-      </button>
+      <div css={inputCheckboxWrapper}>
+        <input
+          css={inputCheckbox}
+          data-cancelled={state === 'disabled'}
+          data-checked={state === 'checked'}
+          defaultValue={state}
+          name='state'
+          tabIndex={-1}
+          type='checkbox'
+          onChange={onStateChange}
+        />
+        <span css={inputCheckboxIcon} />
+      </div>
+      <input
+        css={inputText}
+        defaultValue={name}
+        name='name'
+        type='text'
+        onChange={onNameChange}
+      />
     </div>
   )
 }
 
-const clipboardChecklistItemCss = css([flexedColumnWithGap(0), {}])
+const clipboardChecklistItemCss = css([flexedRowWithGap(2)])

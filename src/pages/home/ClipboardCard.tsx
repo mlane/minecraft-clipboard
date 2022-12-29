@@ -3,12 +3,12 @@ import { FC } from 'react'
 import { css } from '@emotion/react'
 import { Link } from 'react-router-dom'
 import {
-  buttonDefault,
   cardDefault,
   cardEmptyLink,
+  linkDefault,
   typographyH3,
 } from 'src/common/styles'
-import { ClipboardConfig } from 'src/constants'
+import { ClipboardConfig, spacing } from 'src/constants'
 
 interface ClipboardCardProps {
   clipboard: ClipboardConfig
@@ -40,8 +40,9 @@ export const ClipboardCard: FC<ClipboardCardProps> = ({
 }
 
 const clipboardCardDeleteButtonCss = css([
-  buttonDefault,
+  linkDefault,
   {
+    marginTop: `${spacing * 6}px`,
     position: 'relative',
   },
 ])

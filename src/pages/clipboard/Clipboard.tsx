@@ -20,5 +20,6 @@ export const Clipboard: FC = () => {
   if (status === 'loading') {
     return null
   }
+
   return <ClipboardContainer user={user} />
 }

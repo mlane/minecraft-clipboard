@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { FC, useEffect, useState } from 'react'
+import { css } from '@emotion/react'
 import { User } from 'firebase/auth'
 import { doc, getFirestore, setDoc } from 'firebase/firestore'
 import isEmpty from 'lodash.isempty'
@@ -79,7 +80,7 @@ export const ClipboardContainer: FC<ClipboardContainerProps> = ({ user }) => {
   }
 
   return (
-    <div css={clipboardCss}>
+    <div css={clipboardContainerCss}>
       <h1 css={typographyH1}>{name}</h1>
       {checklist.map(({ name, state }, index) => (
         <ClipboardChecklistItem
@@ -102,4 +103,10 @@ export const ClipboardContainer: FC<ClipboardContainerProps> = ({ user }) => {
   )
 }
 
-const clipboardCss = flexedColumnWithGap(4)
+const clipboardContainerCss = css([
+  flexedColumnWithGap(2),
+  {
+    textAlign: 'center',
+    width: '100%',
+  },
+])

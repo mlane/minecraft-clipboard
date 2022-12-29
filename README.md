@@ -18,6 +18,6 @@ Shoutout to [Nuchaz owner of Bibliocraft](https://www.curseforge.com/minecraft/m
 
 ![AdobeColor-Skull Pixel Art](https://user-images.githubusercontent.com/13138738/209447102-d1c679a0-a169-42ce-a3ea-ac320d576726.jpeg)
 
-## Suggestions
+## Suggestions/Bugs/Other 
 
 This project is very much a work in progress. Feel free to create an issue for suggestions/bugs.

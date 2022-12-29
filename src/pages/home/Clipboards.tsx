@@ -16,7 +16,6 @@ interface ClipboardsProps {
 
 export const Clipboards: FC<ClipboardsProps> = ({ user }) => {
   const { uid } = user ?? {}
-
   const firestore = getFirestore()
   const ref = doc(firestore, 'users', uid)
   const { status, data: userData } = useFirestoreDocData(ref) ?? {}

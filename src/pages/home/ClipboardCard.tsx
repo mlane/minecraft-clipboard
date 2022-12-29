@@ -8,15 +8,10 @@ import {
   cardEmptyLink,
   typographyH3,
 } from 'src/common/styles'
+import { ClipboardConfig } from 'src/constants'
 
 interface ClipboardCardProps {
-  clipboard: {
-    checklist: {
-      name: string
-      state: string
-    }[]
-    name?: string
-  }
+  clipboard: ClipboardConfig
   clipboardId: string
   onDeleteClipboardButtonClick(clipboardId: string): unknown
 }
@@ -33,7 +28,11 @@ export const ClipboardCard: FC<ClipboardCardProps> = ({
     <div css={cardDefault}>
       <Link css={cardEmptyLink} to={`/clipboard/${clipboardId}`} />
       <h3 css={typographyH3}>{name}</h3>
-      <button css={clipboardCardDeleteButtonCss} onClick={onButtonClick}>
+      <button
+        css={clipboardCardDeleteButtonCss}
+        type='button'
+        onClick={onButtonClick}
+      >
         Delete clipboard
       </button>
     </div>

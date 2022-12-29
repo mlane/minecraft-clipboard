@@ -1,4 +1,4 @@
 const footerHeight = 40
-const topNavHeight = 60
+const topNavHeight = 200
 
 export { footerHeight, topNavHeight }

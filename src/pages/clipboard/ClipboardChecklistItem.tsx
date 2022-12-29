@@ -38,7 +38,6 @@ export const ClipboardChecklistItem: FC<ClipboardChecklistItemProps> = ({
 
   const onStateChange = (event: FormEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget ?? {}
-    console.log('is this still happening')
     const updatedValue =
       value === 'default'
         ? 'checked'

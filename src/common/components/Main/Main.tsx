@@ -18,7 +18,7 @@ const mainCss = css([
   {
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: `calc(100vh - ${footerHeight + topNavHeight}px)`,
+    minHeight: `calc(100dvh - ${footerHeight + topNavHeight}px)`,
     paddingBottom: `${spacing * 4}px`,
   },
 ])

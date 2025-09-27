@@ -23,8 +23,6 @@ Special thanks to [Nuchaz, creator of Bibliocraft](https://www.curseforge.com/mi
 ## Resources
 
 Here are some resources that inspired or contributed to the development of this project:
-
-- [Official Website](http://minecraftclipboard.com/)
 - [Bibliocraft Mod](https://www.curseforge.com/minecraft/mc-mods/bibliocraft)
 - [Minecraft Evenings Font](https://www.fontspace.com/minecraft-evenings-font-f17735)
 - [Ubuntu Font](https://fonts.google.com/specimen/Ubuntu)
